@@ -96,11 +96,21 @@ function gobuster_dir {
 }
 
 function gobuster_vhost {
-	read -p "wordlist for gobuster_vhost::" wlistgo 
+	while true; do
+		read -p "wordlist for gobuster_vhost::" wlistgo
+		if [ -f "$wlistgo" ];then
+			break
+		else
+			if [ -z "$wlistgo" ];then
+				wlistgo="/usr/share/wordlists/dirb/common.txt"
+				break
+			else
+				echo "File Not Exist::$wlistgo"
+				continue
+			fi
+		fi
+	done
 	read -p "host or domain::" hst
-	if [ ! -f "$wlistgo" ]; then
-		wlistgo="/usr/share/wordlists/dirb/common.txt"
-	fi
 	if [ -z "$hst" ]; then
 		hst=$host
 	fi
@@ -173,4 +183,3 @@ function main {
 
 }
 main
-
