@@ -1,4 +1,8 @@
-
+#!/bin/bash
+# Author: 
+# Adapted: 
+# Date: 02-05-2022
+# Description: Scanning
 
 
 function nmap {
@@ -160,7 +164,7 @@ function main {
 			echo  "      8) gobuster_vhost wordlist"
 			echo  "      9) dirb custom wordlist"
 			echo  "     10) change Host (IP)"
-                        echo  "     11) exit"
+            echo  "     11) exit"
 			echo 
 			echo  -n '['$cwd']> '
 			read yn
@@ -175,8 +179,8 @@ function main {
 				7 ) gobuster_dir ; continue;;
 				8 ) gobuster_vhost ; continue;;
 				9 ) read -p "wordlist for dirb::" wlist ; dirb; continue ;;
-			       10 ) hosts ; continue;;
-			       11 ) break ;;
+			    10 ) hosts ; continue;;
+			    11 ) break ;;
 				* ) echo "invalid option number" ; continue ;;
 			esac
 	done
